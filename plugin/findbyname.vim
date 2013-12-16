@@ -10,6 +10,10 @@ function! s:OpenQuickList(data)
 
   call append(0, a:data)
 
+  $delete
+  normal! gg
+  setlocal nomodifiable
+
   nnoremap <buffer> <silent> <CR> :call s:OpenQuickListFile()<CR>
 endfunction
 
