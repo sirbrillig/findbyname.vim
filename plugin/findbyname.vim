@@ -1,4 +1,4 @@
-function! OpenQuickList(data)
+function! s:OpenQuickList(data)
   silent! botright 10split __QuickList__
   normal! ggdG
 
@@ -10,10 +10,10 @@ function! OpenQuickList(data)
 
   call append(0, a:data)
 
-  nnoremap <buffer> <silent> <CR> :call OpenQuickListFile()<CR>
+  nnoremap <buffer> <silent> <CR> :call s:OpenQuickListFile()<CR>
 endfunction
 
-function! OpenQuickListFile() range
+function! s:OpenQuickListFile() range
   let fnames = getline(a:firstline, a:lastline)
   if len(fnames) <=# 0
     return
@@ -48,7 +48,7 @@ function! RunFindByName(name, ...)
     call add(results, '# No results.')
   endif
   call insert(results, '# ' . message, 0)
-  call OpenQuickList(results)
+  call s:OpenQuickList(results)
 endfunction
 
 command! -nargs=* FindByName call RunFindByName(<f-args>)
