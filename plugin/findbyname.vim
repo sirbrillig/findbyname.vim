@@ -14,10 +14,10 @@ function! s:OpenQuickList(data)
   normal! gg
   setlocal nomodifiable
 
-  nnoremap <buffer> <silent> <CR> :call s:OpenQuickListFile()<CR>
+  nnoremap <buffer> <silent> <CR> :call OpenFindByNameQuickListFile()<CR>
 endfunction
 
-function! s:OpenQuickListFile() range
+function! OpenFindByNameQuickListFile() range
   let fnames = getline(a:firstline, a:lastline)
   if len(fnames) <=# 0
     return
