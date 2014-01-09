@@ -1,5 +1,13 @@
 function! s:OpenQuickList(data)
-  silent! botright 10split __QuickList__
+  let winnum = bufwinnr('__QuickList__')
+  if winnum != -1
+    if winnum != winnr()
+      exe winnum . 'wincmd w'
+    endif
+  else
+    silent! botright 10split __QuickList__
+  endif
+  setlocal modifiable
   normal! ggdG
 
   setlocal buftype=nofile
