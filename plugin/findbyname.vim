@@ -1,3 +1,7 @@
+if !exists("FindByName_Use_Tabs")
+    let FindByName_Use_Tabs = 'false'
+endif
+
 function! s:OpenQuickList(data)
   let winnum = bufwinnr('__QuickList__')
   if winnum != -1
@@ -37,8 +41,16 @@ function! OpenFindByNameQuickListFile() range
     if len(fname) ==# 0 || strpart(fname, 0, 1) ==# '#'
       continue
     endif
-    exe 'tabnew ' . fname
+    call s:CreateNewBufferForFile(fname)
   endfor
+endfunction
+
+function! s:CreateNewBufferForFile(fname)
+  if g:FindByName_Use_Tabs ==# 'true'
+    exe 'tabnew ' . a:fname
+  else
+    exe 'edit ' . a:fname
+  endif
 endfunction
 
 function! RunFindByName(name, ...)
