@@ -75,4 +75,4 @@ function! RunFindByName(name, ...)
   call s:OpenQuickList(results)
 endfunction
 
-command! -nargs=* FindByName call RunFindByName(<f-args>)
+command! -nargs=* -complete=file FindByName call RunFindByName(<f-args>)
