@@ -5,7 +5,7 @@ A vim plugin for finding files with a split window
 
 # FindByName
 
-version 1.0
+version 1.1
 
 Adds a command to search a directory for files and outputs the results into a
 split window. I was frustrated by the inability to output the results of vim's
@@ -36,4 +36,13 @@ installed, it's very simple; just clone the project into your ~/.vim/bundle/ dir
 ```
 cd ~/.vim/bundle/
 git clone https://github.com/sirbrillig/findbyname.vim
+```
+
+## Configuration
+
+The plugin will default to opening the files it finds in a new buffer, but you
+can set the option FindByName_Use_Tabs to 'true' to use a new tab instead.
+
+```
+let FindByName_Use_Tabs = 'true'
 ```
